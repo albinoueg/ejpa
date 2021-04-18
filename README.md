@@ -18,4 +18,4 @@ Projeto conta com as seguintes tecnologias:
 ## Créditos   
 
 Copyright (C) 2020-2021 by Albino Moreira dos Santos
-* Albino Moreira dos Santos | [@albinoueg](https://github.com/albinoueg) | albino.santos@sefaz.go.gov.br    
+* Albino Moreira dos Santos | [@albinoueg](https://github.com/albinoueg) | albino.sistemas@gmail.com    
