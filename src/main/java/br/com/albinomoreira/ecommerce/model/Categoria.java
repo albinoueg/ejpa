@@ -1,6 +1,5 @@
 package br.com.albinomoreira.ecommerce.model;
 
-import br.com.albinomoreira.ecommerce.enums.SexoCliente;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,11 +11,11 @@ import javax.persistence.Id;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Cliente {
+public class Categoria {
 
     @EqualsAndHashCode.Include
     @Id
     private Integer id;
     private String nome;
-    private SexoCliente sexo;
+    private Integer categoriaPaiId;
 }
