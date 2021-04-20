@@ -10,7 +10,6 @@ public class ClienteCRUDTest extends EntityManagerTest {
     @Test
     public void create(){
         Cliente cliente = new Cliente();
-        cliente.setId(3);
         cliente.setNome("Albino Moreira dos Santos");
 
         entityManager.getTransaction().begin();

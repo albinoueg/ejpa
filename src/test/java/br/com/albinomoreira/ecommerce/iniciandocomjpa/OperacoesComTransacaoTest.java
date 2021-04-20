@@ -12,8 +12,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
     @Test
     public void inserirPrimeiroObjetoComMerge(){
         Produto produto = new Produto();
-
-        produto.setId(4);
         produto.setNome("Microfone");
         produto.setDescricao("melhor qualidade");
         produto.setPreco(new BigDecimal(1000));
