@@ -22,7 +22,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
@@ -40,12 +40,12 @@ public class Pedido {
 
     private StatusPedido status;
 
-    @Embedded
-    private EnderecoEntregaPedido enderecoEntrega;
-
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itensPedidos;
 
     @OneToOne(mappedBy = "pedido")
     private PagamentoCartao pagamentoCartao;
+
+    @Embedded
+    private EnderecoEntregaPedido enderecoEntrega;
 }
