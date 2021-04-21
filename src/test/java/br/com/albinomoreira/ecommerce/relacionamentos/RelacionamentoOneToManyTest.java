@@ -12,7 +12,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class RelacionamentoManyToOneTest extends EntityManagerTest {
+public class RelacionamentoOneToManyTest extends EntityManagerTest {
 
     @Test
     public void verificarRelacionamento() {
@@ -31,12 +31,12 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
         entityManager.clear();
 
-        Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
-        Assert.assertNotNull(pedidoVerificacao.getCliente());
+        Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
+        Assert.assertFalse(clienteVerificacao.getPedidos().isEmpty());
     }
 
     @Test
-    public void verificarRelacionamentoItemPedido() {
+    public void verificarRelacionamentoPedido() {
         Cliente cliente = entityManager.find(Cliente.class, 1);
         Produto produto = entityManager.find(Produto.class, 1);
 
@@ -59,8 +59,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
         entityManager.clear();
 
-        ItemPedido itemPedidoVerificacao = entityManager.find(ItemPedido.class, itemPedido.getId());
-        Assert.assertNotNull(itemPedidoVerificacao.getPedido());
-        Assert.assertNotNull(itemPedidoVerificacao.getProduto());
+        Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
+        Assert.assertFalse(pedidoVerificacao.getItensPedidos().isEmpty());
     }
 }
