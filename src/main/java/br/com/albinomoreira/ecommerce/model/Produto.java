@@ -1,5 +1,7 @@
 package br.com.albinomoreira.ecommerce.model;
 
+import br.com.albinomoreira.ecommerce.listener.GenericListener;
+import br.com.albinomoreira.ecommerce.listener.GerarNotaFiscalListener;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EntityListeners({GenericListener.class})
 @Entity
 @Table(name = "produto")
 public class Produto {
