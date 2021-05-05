@@ -2,10 +2,7 @@ package br.com.albinomoreira.ecommerce.relacionamentos;
 
 import br.com.albinomoreira.ecommerce.EntityManagerTest;
 import br.com.albinomoreira.ecommerce.enums.StatusPedido;
-import br.com.albinomoreira.ecommerce.model.Cliente;
-import br.com.albinomoreira.ecommerce.model.ItemPedido;
-import br.com.albinomoreira.ecommerce.model.Pedido;
-import br.com.albinomoreira.ecommerce.model.Produto;
+import br.com.albinomoreira.ecommerce.model.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -47,6 +44,7 @@ public class RelacionamentoOneToManyTest extends EntityManagerTest {
         pedido.setCliente(cliente);
 
         ItemPedido itemPedido = new ItemPedido();
+        itemPedido.setId(new ItemPedidoId());
         itemPedido.setPrecoProduto(produto.getPreco());
         itemPedido.setQuantidade(1);
         itemPedido.setPedido(pedido);
