@@ -32,6 +32,9 @@ public class Produto {
 
     private String nome;
 
+    @Lob
+    private byte[] foto;
+
     private String descricao;
 
     private BigDecimal preco;

@@ -3,6 +3,7 @@ package br.com.albinomoreira.ecommerce.mapeamentoavancao;
 import br.com.albinomoreira.ecommerce.EntityManagerTest;
 import br.com.albinomoreira.ecommerce.model.NotaFiscal;
 import br.com.albinomoreira.ecommerce.model.Pedido;
+import br.com.albinomoreira.ecommerce.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class SalvandoArquivosTest extends EntityManagerTest {
@@ -27,6 +29,8 @@ public class SalvandoArquivosTest extends EntityManagerTest {
         entityManager.getTransaction().begin();
         entityManager.persist(notaFiscal);
         entityManager.getTransaction().commit();
+
+        entityManager.clear();
 
         NotaFiscal notaFiscalVerificacao = entityManager.find(NotaFiscal.class, notaFiscal.getId());
         Assert.assertNotNull(notaFiscalVerificacao.getXml());
@@ -46,6 +50,31 @@ public class SalvandoArquivosTest extends EntityManagerTest {
         try {
             return SalvandoArquivosTest.class.getResourceAsStream(
                     "/nota-fiscal.xml").readAllBytes();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void salvarFoto() throws IOException {
+        Produto produto = entityManager.find(Produto.class, 1);
+
+        entityManager.getTransaction().begin();
+        produto.setFoto(carregarFoto());
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+        Assert.assertNotNull(produtoVerificacao.getFoto());
+        Assert.assertTrue(produtoVerificacao.getFoto().length > 0);
+
+    }
+
+    private static byte[] carregarFoto() {
+        try {
+            return SalvandoArquivosTest.class.getResourceAsStream(
+                    "/print.png").readAllBytes();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
